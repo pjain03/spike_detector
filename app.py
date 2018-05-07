@@ -22,22 +22,22 @@ DONE, INTERVAL, PREV = False, 1.25, 0
 args.NAME = str(args.NAME)
 args.LIMIT = int(args.LIMIT)
 
-try:
-  print("Starting up Spike Detector...")
-  while not DONE:
-    # locate and check all processes linked with current process
-    ps = [proc.cpu_percent() < args.LIMIT for proc in psutil.process_iter() 
-            if args.NAME in proc.name()]
-    if ps:
-      # all should be within limit within 100 * INTERVAL, otherwise fresh vector is detected
-      if not all(ps) and PREV < 100 * INTERVAL: 
-        PREV = 100 * INTERVAL
-        print('ALERT! %(N)s is going over %(L)d percent CPU usage!' % {"N": args.NAME, "L": args.LIMIT})
-      else: 
-        PREV = 0
-        time.sleep(INTERVAL)
-    else:
-      DONE = True
-  print("Thank you for using Spike Detector!")
-except:
-  print('Error occured while parsing your arguments')
+# try:
+print("Starting up Spike Detector...")
+while not DONE:
+  # locate and check all processes linked with current process
+  ps = [proc.cpu_percent() < args.LIMIT for proc in psutil.process_iter() 
+          if args.NAME in proc.name()]
+  if ps:
+    # all should be within limit within 100 * INTERVAL, otherwise fresh vector is detected
+    if not all(ps) and PREV < 100 * INTERVAL: 
+      PREV = 100 * INTERVAL
+      print('ALERT! %(N)s is going over %(L)d percent CPU usage!' % {"N": args.NAME, "L": args.LIMIT})
+    else: 
+      PREV = 0 if PREV <= 0 else PREV - 1
+      time.sleep(INTERVAL)
+  else:
+    DONE = True
+print("Thank you for using Spike Detector!")
+# except:
+#   print('Error occured while parsing your arguments')
