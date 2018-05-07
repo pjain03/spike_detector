@@ -22,6 +22,6 @@ MacOSX (quad core processor, so we set the default limit to 200% because
 Python 2.7.13
 pip 10.0.1
 
-Some useful commands:
-pip install -r requirements.txt
-python app.py -h
+Instructions:
+1. pip install -r requirements.txt
+2. python app.py -h
