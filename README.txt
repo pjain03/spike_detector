@@ -17,6 +17,8 @@ tactics but the one thing that can stop them is if you're aware of how your
 computer is being used - this utility helps you in that goal!
 
 Software used: 
+MacOSX (quad core processor, so we set the default limit to 200% because
+200% virtual usage corresponds to about 50% real usage)
 Python 2.7.13
 pip 10.0.1
 

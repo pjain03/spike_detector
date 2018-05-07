@@ -15,7 +15,7 @@ parser.add_argument('-n', dest='NAME', help='Specifies the name of the type \
   of process to be watched eg. Google Chrome, Safari etc.', 
   default='Google Chrome')
 parser.add_argument('-l', dest='LIMIT', help='Specifies the CPU percentage \
-  you want to limit this process to', default=90)
+  you want to limit this process to', default=200)
 args = parser.parse_args()
 
 DONE, INTERVAL, PREV = False, 1.25, 0
