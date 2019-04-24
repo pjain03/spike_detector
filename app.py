@@ -22,7 +22,6 @@ DONE, INTERVAL, PREV = False, 1.25, 0
 args.NAME = str(args.NAME)
 args.LIMIT = int(args.LIMIT)
 
-# try:
 print("Starting up Spike Detector...")
 while not DONE:
   # locate and check all processes linked with current process
@@ -39,5 +38,3 @@ while not DONE:
   else:
     DONE = True
 print("Thank you for using Spike Detector!")
-# except:
-#   print('Error occured while parsing your arguments')
